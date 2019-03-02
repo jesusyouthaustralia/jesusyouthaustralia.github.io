@@ -2373,3 +2373,97 @@ fieldset[disabled] .s-btn {
 .s-swiper__pagination-v1--dark .swiper-pagination-bullet-active {
   background: #13b1cd;
 }
+
+.clip-text {
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    margin: .25em;
+    padding: .5em .75em;
+    text-align: center;
+    /* Color fallback */
+    color: #fff;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.clip-text:before,
+.clip-text:after {
+    position: absolute;
+    content: '';
+}
+
+/* Background */
+.clip-text:before {
+    z-index: -2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: inherit;
+}
+
+/* Text Background (black zone) */
+.clip-text:after {
+    position: absolute;
+    z-index: -1;
+    top: .125em;
+    right: .125em;
+    bottom: .125em;
+    left: .125em;
+    background-color: #000;
+    transform: rotate(-2.0deg);
+}
+
+.clip-text_one {
+    background-image: url('../img/paint.jpg');
+}
+.date-title>.highlight {
+  background: #c54041;
+}
+.venue-title>.highlight {
+  background: #009150;
+}
+.event-title1>.highlight {
+  background: #c54041;
+}
+.event-title2>.highlight {
+  background: #009150;
+}
+.event-title3>.highlight {
+  background: #fffc00;
+  color: black;
+}
+.event-title4>.highlight {
+  background: #3587c1;
+}
+
+.highlight {
+  display: inline;
+  color: white;
+  padding: 5px;
+  box-decoration-break: clone;
+}
+
+.date-title {
+  font: 36px/1.25 Ubuntu, sans-serif;
+  text-transform: uppercase;
+}
+
+.special-title {
+  line-height: 1.2em;
+}
+
+.venue-title {
+  font: 20px/1.25 Ubuntu, sans-serif;
+  margin-bottom: 1em;
+  transform: rotate(-5.7deg);
+}
+
+.event-title {
+  font: 15px/1.25 Ubuntu, sans-serif;
+  margin-bottom: 1em;
+}
