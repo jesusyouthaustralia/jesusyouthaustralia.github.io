@@ -160,7 +160,13 @@
                                         <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
                                             <!-- <span class="s-promo-block-v3__date g-font-size-100--xs g-font-size-135--lg g-font-weight--300 g-color--primary">4-7</span> -->
                                             <p class="special-title date-title"><span class="highlight">July 4-7 2019</span></p>
-                                            <p class="special-title venue-title"><span class="highlight">Sacred Heart, Oakleigh</span></p>
+                                            <p class="special-title venue-title"><span class="highlight">Sacred Heart, Hughesdale</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="pull-left">
+                                        <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                                            <!-- <span class="s-promo-block-v3__date g-font-size-100--xs g-font-size-135--lg g-font-weight--300 g-color--primary">4-7</span> -->
+                                            <p class="special-title date-title"><span class="highlight">Register</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -321,22 +327,29 @@
                             <span class="g-font-size-30--xs g-font-weight--700 g-color--white">July</span>
                         </div>
                         <p class="g-font-size-18--xs g-color--white-opacity g-margin-b-40--xs">The Chosen Youth conference is organized by Jesus Youth Australia bringing together young people from all walks of life celebrating Jesus. With an array of highly sought after international and local speakers coupled with great music talents, the conference is not to be missed. Register now.</p>
-                        <a href="https://chosenconference.org.au/" class="text-uppercase s-btn s-btn--white-bg  s-btn--md s-btn--white-brd g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">Register</a>
+                        <a href="#" class="text-uppercase s-btn s-btn--white-bg
+                          s-btn--md s-btn--white-brd g-radius--50 g-padding-x-50--xs g-margin-b-20--xs"
+                          data-toggle="modal" data-bmdWidth="600" data-bmdHeight="681" data-target="#myModal">
+                          Register
+                        </a>
                         <!-- <button type="submit" class="text-uppercase btn-block s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">Register</button> -->
                     </div>
                     <div class="col-md-5 g-hor-centered-row__col g-margin-b-80--xs">
-                        <form class="center-block s-promo-block-v2__form g-width-100-percent--xs g-width-400--sm g-bg-color--dark-light g-padding-x-50--xs g-padding-y-80--xs g-radius--4">
+                        <form class="center-block s-promo-block-v2__form g-width-100-percent--xs
+                            g-width-400--sm g-bg-color--dark-light g-padding-x-50--xs g-padding-y-80--xs
+                            g-radius--4 gform" method="POST" data-email="jentojoy@gmail.com"
+                            action="https://script.google.com/macros/s/AKfycbxKubS_E69FELndNbUeYQ7mTLvlwhhc331BqDjihQ/exec">
                             <div class="g-text-center--xs g-margin-b-40--xs">
                                 <h2 class="g-font-size-30--xs g-color--white">Find out more</h2>
                             </div>
                             <div class="g-margin-b-40--xs">
-                                <input type="text" class="form-control s-form-v3__input" placeholder="* Name">
+                                <input type="text" name="username" id="username" class="form-control s-form-v3__input" placeholder="* Name">
                             </div>
                             <div class="g-margin-b-40--xs">
-                                <input type="email" class="form-control s-form-v3__input" placeholder="* Email">
+                                <input type="email" name="useremail" id="useremail" class="form-control s-form-v3__input" placeholder="* Email">
                             </div>
                             <div class="g-margin-b-40--xs">
-                                <input type="text" class="form-control s-form-v3__input" placeholder="* Phone">
+                                <input type="text" name="userphone" id="userphone" class="form-control s-form-v3__input" placeholder="* Phone">
                             </div>
                             <div class="g-text-center--xs">
                                 <button type="submit" class="text-uppercase btn-block s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">submit</button>
@@ -486,6 +499,22 @@
 
         <!--========== FOOTER ==========-->
         <footer class="g-bg-color--dark">
+            <!-- Modal -->
+            <div class="modal fade " id="myModal" tabindex="-1" role="dialog"
+              aria-labelledby="myModalLabel" aria-hidden="true" >
+             <div class="modal-dialog modal-lg">
+               <div class="modal-content">
+                 <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   <h4 class="modal-title" id="myModalLabel">Register</h4>
+                 </div>
+                 <div class="modal-body" style="height: 78vh;">
+                   <iframe class="embed-responsive-item" frameborder="0" src="./register.html" width="99%" height="99%"></iframe>
+                 </div>
+
+               </div>
+             </div>
+            </div>
             <!-- Links -->
             <div class="g-hor-divider__dashed--white-opacity-lightest">
                 <div class="container g-padding-y-80--xs">
@@ -568,6 +597,7 @@
         <script type="text/javascript" src="js/components/parallax.min.js"></script>
         <script type="text/javascript" src="js/components/google-map2.min.js"></script>
         <script type="text/javascript" src="js/components/wow.min.js"></script>
+        <script data-cfasync="false" type="text/javascript" src="js/form-submission-handler.js"></script>
         <!--========== END JAVASCRIPTS ==========-->
 
     </body>
