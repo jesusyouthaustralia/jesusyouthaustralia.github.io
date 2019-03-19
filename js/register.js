@@ -87,7 +87,6 @@ $(document).ready(function(){
 
 				if (form.valid() === true){
 
-					console.log('form is good '+$('#participant_information').is(":visible"));
 					if ($('#account_information').is(":visible")){
 						current_fs = $('#account_information');
 						next_fs = $('#participant_information');
