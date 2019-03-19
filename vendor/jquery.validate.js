@@ -314,7 +314,7 @@ $.extend( $.validator, {
 		remote: "Please fix this field.",
 		email: "Please enter a valid email address.",
 		url: "Please enter a valid URL.",
-		date: "Please enter a valid date.",
+		date: "You must be 18 years old to register.",
 		dateISO: "Please enter a valid date ( ISO ).",
 		number: "Please enter a valid number.",
 		digits: "Please enter only digits.",
@@ -1134,7 +1134,7 @@ $.extend( $.validator, {
 			// Retrieved 2014-01-14
 			// If you have a problem with this implementation, report a bug against the above spec
 			// Or use custom methods to implement your own email validation
-			return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( value );
+			return this.optional( element ) || /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test( value );
 		},
 
 		// http://jqueryvalidation.org/url-method/
@@ -1144,8 +1144,34 @@ $.extend( $.validator, {
 		},
 
 		// http://jqueryvalidation.org/date-method/
+		// date: function( value, element ) {
+		// 	return this.optional( element ) || !/Invalid|NaN/.test( new Date( value ).toString() );
+		// },
+
+
+		// http://jqueryvalidation.org/date-method/
 		date: function( value, element ) {
-			return this.optional( element ) || !/Invalid|NaN/.test( new Date( value ).toString() );
+            var from = value.split("-"); // DD MM YYYY
+            // var from = value.split("/"); // DD/MM/YYYY
+
+            var day = from[2];
+            var month = from[1];
+            var year = from[0];
+            var age = 18;
+
+            var mydate = new Date();
+            mydate.setFullYear(year, month-1, day);
+
+            var currdate = new Date();
+            var setDate = new Date();
+
+            setDate.setFullYear(mydate.getFullYear() + age, month-1, day);
+
+            if ((currdate - setDate) > 0){
+                return true;
+            }else{
+                return false;
+            }
 		},
 
 		// http://jqueryvalidation.org/dateISO-method/
