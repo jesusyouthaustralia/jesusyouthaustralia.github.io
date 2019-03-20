@@ -13,6 +13,68 @@
 		#participant_information{
 			display:none;
 		}
+    .styled-checkbox {
+      position: absolute;
+      border: 1px solid black;
+      opacity: 0;
+    }
+    .styled-checkbox + label {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+    }
+    .styled-checkbox + label:before {
+      content: '';
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: 20px;
+      height: 20px;
+      background: grey;
+    }
+    .styled-checkbox:hover + label:before {
+      background: #f35429;
+    }
+    .styled-checkbox:focus + label:before {
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    }
+    .styled-checkbox:checked + label:before {
+      background: #f35429;
+    }
+    .styled-checkbox:disabled + label {
+      color: #b8b8b8;
+      cursor: auto;
+    }
+    .styled-checkbox:disabled + label:before {
+      box-shadow: none;
+      background: #ddd;
+    }
+    .styled-checkbox:checked + label:after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 9px;
+      background: white;
+      width: 2px;
+      height: 2px;
+      box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
+    }
+    .unstyled {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    li {
+      margin: 20px 0;
+    }
+
+    .centered {
+      width: 95%;
+      margin: auto;
+    }
 	</style>
 </head>
 <body>
@@ -92,30 +154,30 @@
 <!-- Text input-->
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-lg-4 control-label">Full name</label>
+  <label class="col-lg-4 control-label"><span id="grp_leader">Group Leader </span>Full name</label>
   <div class="col-lg-8">
-    <input type="text"  name="field_name[]" class="form-control" maxlength="100"
+    <input type="text"  name="field_name0" class="form-control this-required" maxlength="100"
       placeholder="Enter your first and last name seperated by a space." required>
   </div>
 </div>
 <div class="form-group">
   <label class="col-lg-4 control-label">Email</label>
   <div class="col-lg-8">
-    <input type="email"  name="field_email[]" class="form-control"
+    <input type="email"  name="field_email0" class="form-control this-required this-email"
       placeholder="Enter your email." required>
   </div>
 </div>
 <div class="form-group">
   <label class="col-lg-4 control-label">Date of birth (You must be minimum 18 years to register)</label>
   <div class="col-lg-8">
-    <input type="date"  name="field_dob[]" class="form-control"
+    <input type="date"  name="field_dob0" class="form-control this-required this-date"
       placeholder="Enter your date of birth." required>
   </div>
 </div>
 <div class="form-group">
   <label for="" class="col-lg-4 control-label">Gender</label>
   <div class="col-lg-8">
-    <select class="form-control"  name="gender[]" required>
+    <select class="form-control this-required"  name="gender[]" required>
       <option value="">Please select</option>
       <option value="m">Male</option>
       <option value="f">Female</option>
@@ -125,21 +187,21 @@
 <div class="form-group">
   <label class="col-lg-4 control-label">Street address</label>
   <div class="col-lg-8">
-    <input type="text"  name="street_addr[]" class="form-control"
+    <input type="text"  name="street_addr0" class="form-control this-required"
       placeholder="Enter your street address. Eg. 296 wood st" required>
   </div>
 </div>
 <div class="form-group">
   <label class="col-lg-4 control-label">Suburb</label>
   <div class="col-lg-8">
-    <input type="text"  name="suburb_addr[]" class="form-control"
+    <input type="text"  name="suburb_addr0" class="form-control this-required"
       placeholder="Enter your suburb." required>
   </div>
 </div>
 <div class="form-group">
   <label for="" class="col-lg-4 control-label">State</label>
   <div class="col-lg-8">
-    <select class="form-control"  name="state_addr[]" required>
+    <select class="form-control this-required"  name="state_addr0" required>
       <option value="">Please select</option>
       <option value="nsw">NSW</option>
       <option value="vic">VIC</option>
@@ -154,34 +216,34 @@
 <div class="form-group">
   <label class="col-lg-4 control-label">Post code</label>
   <div class="col-lg-8">
-    <input type="number"  name="post_addr[]" class="form-control"
+    <input type="number"  name="post_addr0" class="form-control this-required"
       placeholder="Enter your postcode." pattern="\d*" maxlength="4" required>
   </div>
 </div>
 <div class="form-group">
   <label class="col-lg-4 control-label">Contact number</label>
   <div class="col-lg-8">
-    <input type="number"  name="contact[]" class="form-control"
+    <input type="number"  name="contact0" class="form-control this-required"
       placeholder="Enter your mobile or phone number." pattern="\d*" maxlength="10" required>
   </div>
 </div>
 <div class="form-group">
   <label class="col-lg-4 control-label">Parish / Community</label>
   <div class="col-lg-8">
-    <input type="text"  name="field_comm[]" class="form-control" maxlength="100"
+    <input type="text"  name="field_comm0" class="form-control this-required" maxlength="100"
       placeholder="Enter parish or community you belong to." required>
   </div>
 </div>
 <div class="form-group">
   <label class="col-lg-4 control-label">Medical Conditions</label>
   <div class="col-lg-8">
-    <textarea class="form-control rounded-0" name="medical[]" rows="3"></textarea>
+    <textarea class="form-control rounded-0" name="medical0" rows="3"></textarea>
   </div>
 </div>
 <div class="form-group">
   <label class="col-lg-4 control-label">Special diet</label>
   <div class="col-lg-8">
-    <textarea class="form-control rounded-0" name="diet[]" rows="3"></textarea>
+    <textarea class="form-control rounded-0" name="diet0" rows="3"></textarea>
   </div>
 </div>
 
@@ -196,117 +258,52 @@
     <button id="add-more" name="add-more" class="btn btn-primary">Add More</button>
   </div>
 </div>
-<br><br>
+
             </div>
 
-
+<p><div class="alert alert-warning alert-dismissible fade show alert-grp-number" role="alert">
+  <strong>Not enough members in your group!</strong> You need minimum 5 members to register as a group.
+  <button type="button" class="close alert-close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div></p>
 
 					<p><a class="btn btn-primary next">next</a></p>
 				</fieldset>
 
 				<fieldset id="personal_information" class="">
-					<legend>Personal information</legend>
+					<legend>Agreements</legend>
 
                       <div class="col-md-12">
            <div id="fielda">
                 <div id="fielda0">
 <!-- Text input-->
+<ul class="unstyled centered">
+  <li>
+    <input class="styled-checkbox" id="check_consent" type="checkbox" value="" required>
+    <label for="check_consent">
+      I have downloaded the <a href='https://chosenconference.org.au/wp-content/uploads/2018/02/Individual-Consent-Form-Chosen-2018.pdf' target='_blank'>Consent Form</a> and will return it with my signature to register@chosenconference.org.au.
+    </label>
+  </li>
+  <li>
+    <input class="styled-checkbox" id="check_privacy" type="checkbox" value="" required>
+    <label for="check_privacy">
+      I have read the <a href='https://chosenconference.org.au/privacy' target='_blank'>privacy policy</a> and agree to the <a href='https://chosenconference.org.au/terms-and-conditions/' target='_blank'>terms and conditions</a>.
+    </label>
+  </li>
+  <li>
+    <input class="styled-checkbox" id="check_group" type="checkbox" value="" required>
+    <label for="check_group">
+      I am authorised to act as Leader for the group outlined on this form ('Group'). I will personally be attending Chosen Conference 2018 ('the Event') with this Group, and understand that I will be responsible for collecting the registration information, payment and ensuring all my group members fill out the Individual Consent Form, completely. I understand that I am required to possess the Working With Children Check ('WWCC') / Blue Card required by my state or territory.
+      <p style="padding-top:10px;">I understand that I am responsible for the complete and accurate registration of my Group in accordance with group registration process for the Event. I understand that an invoice(s) for my Group will be issued to me according to the number of registrations. I agree to pay any invoice(s) by the due date, unless I have made other arrangements with Jesus Youth Australia prior to the due date. I understand that failure to pay invoices by set deadlines, including Registration due dates, may incur additional fees and / or cancellation of registration.</p>
+      <p>I agree to collect individual Consent Forms for every member of my group (hereafter 'Consent Form'). I understand that this Consent Form includes the Indemnity, Medical Treatment, Involvement and Privacy clauses supplied by Jesus Youth Australia. I agree to carry a copy of the Consent Forms for my Group, and to produce them to Jesus Youth Australia if requested before, during or after Chosen Conference 2017.</p>
+    </label>
+  </li>
+</ul>
 
-<div class="form-group">
-  <label class="col-md-3">Job Title</label>
-  <div class="col-md-8">
-  <input type="text"  name="job_tit[]" id="job_tit" class="form-control" placeholder="e.g. Java/php Developer" required>
-</div>
-</div>
 
-<br><br>
-<br>
-<!-- Text input-->
-<div class="form-group">
-<label class="col-md-3">Company</label>
-              <div class="col-md-8">
-            <input type="text"  name="company[]" id="company" class="form-control" placeholder="" required>
-        </div>
-</div>
 
-<br><br>
-<!-- Text input-->
-<div class="form-group">
- <label class="col-md-3">City</label>
- <div class="col-md-8">
- <input type="text"  name="city[]" id="city" class="form-control" placeholder="" required>
-</div>
-</div>
-<br><br>
 
-<!-- Text input-->
-<div class="form-group">
- <label class="col-md-3">Time period</label>
- <div class="col-md-8">
-         <div class="col-md-4">
-			<select class="form-control"  name="work_from[]" >
-<option value="1995">	1995	</option>
-<option value="1996">	1996	</option>
-<option value="1997">	1997	</option>
-<option value="1998">	1998	</option>
-<option value="1999">	1999	</option>
-<option value="2000">	2000	</option>
-<option value="2001">	2001	</option>
-<option value="2002">	2002	</option>
-<option value="2003">	2003	</option>
-<option value="2004">	2004	</option>
-<option value="2005">	2005	</option>
-<option value="2006">	2006	</option>
-<option value="2007">	2007	</option>
-<option value="2008">	2008	</option>
-<option value="2009">	2009	</option>
-<option value="2010">	2010	</option>
-<option value="2011">	2011	</option>
-<option value="2012">	2012	</option>
-<option value="2013">	2013	</option>
-<option value="2014">	2014	</option>
-<option value="2015">	2015	</option>
-<option value="2016">	2016	</option>
-		</select>
-		</div>
-		 <div class="col-md-1">
-		<label>To</label>
-		</div>
-
-		 <div class="col-md-4">
-		<select class="form-control"  name="work_to[]" >
-			<option value="1980">	1980	</option>
-<option value="2000">	2000	</option>
-<option value="2001">	2001	</option>
-<option value="2002">	2002	</option>
-<option value="2003">	2003	</option>
-<option value="2004">	2004	</option>
-<option value="2005">	2005	</option>
-<option value="2006">	2006	</option>
-<option value="2007">	2007	</option>
-<option value="2008">	2008	</option>
-<option value="2009">	2009	</option>
-<option value="2010">	2010	</option>
-<option value="2011">	2011	</option>
-<option value="2012">	2012	</option>
-<option value="2013">	2013	</option>
-<option value="2014">	2014	</option>
-<option value="2015">	2015	</option>
-<option value="2016">	2016	</option>
-<option value="2017">	2017	</option>
-<option value="2018">	2018	</option>
-<option value="2019">	2019	</option>
-<option value="2020">	2020	</option>
-		</select>
-	</div>
-</div>
-</div>
-
-<br>
-
-<div class="form-group">
-<input type="checkbox" name="cur_work[]" value="cur_work"> I currently work here<br>
-</div>
 
 <hr>
 </div><!--end field0-->
@@ -314,13 +311,12 @@
 
 
 <!-- Button -->
-<div class="form-group">
+<!-- <div class="form-group">
 <div class="col-md-4 col-md-offset-8">
     <button id="add-more1" name="add-more" class="btn btn-primary">Add More</button>
 </div>
-</div>
+</div> -->
 
-<br><br>
   </div>
   					<p><a class="btn btn-primary" id="previous" >Previous</a></p>
 					<p><input class="btn btn-success" type="submit" value="submit"></p>

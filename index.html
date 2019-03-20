@@ -500,7 +500,7 @@
         <!--========== FOOTER ==========-->
         <footer class="g-bg-color--dark">
             <!-- Modal -->
-            <div class="modal fade " id="myModal" tabindex="-1" role="dialog"
+            <div class="modal fade reg-modal" id="myModal" tabindex="-1" role="dialog"
               aria-labelledby="myModalLabel" aria-hidden="true" >
              <div class="modal-dialog modal-lg">
                <div class="modal-content">
@@ -509,14 +509,14 @@
                    <h4 class="modal-title" id="myModalLabel">
                      Register
                      <button type="button" class="btn btn-info participants" id="regLabel">
-                        Participants added <span class="badge badge-light regCount">0</span>
+                        Group total <span class="badge badge-light regCount">0</span>
                      </button>
                    </h4>
                  </div>
                  <div class="modal-body" style="height: 78vh;">
-                   <iframe class="embed-responsive-item" frameborder="0" src="./register.html" width="99%" height="99%"></iframe>
+                   <iframe class="embed-responsive-item" frameborder="0" src="./register.html"
+                    width="99%" height="99%" id="reg-frame"></iframe>
                  </div>
-
                </div>
              </div>
             </div>
@@ -554,6 +554,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- End Links -->
 
             <!-- Copyright -->
@@ -604,7 +605,12 @@
         <script type="text/javascript" src="js/components/wow.min.js"></script>
         <script data-cfasync="false" type="text/javascript" src="js/form-submission-handler.js"></script>
         <!--========== END JAVASCRIPTS ==========-->
-
+        <script type="text/javascript">
+        $("#myModal").on('hidden.bs.modal', function(){
+      		console.log('hidden');
+          $('#reg-frame').attr("src", $('#reg-frame').attr("src"));
+      	});
+        </script>
     </body>
     <!-- End Body -->
 </html>
